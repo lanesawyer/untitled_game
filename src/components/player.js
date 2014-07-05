@@ -28,6 +28,7 @@ Crafty.c('Player', {
 
     if(this._powerLevel % 5 === 0) {
       this._stage += 1;
+      this.setSize(Game.map_grid.tile.width * (this._stage + 1), Game.map_grid.tile.height *(this._stage + 1));
     }
 
     console.log(this._stage);
