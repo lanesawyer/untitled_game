@@ -4,5 +4,5 @@ Crafty.c('Enemy', {
   init: function() {
     this.requires('Actor, Color')
     .color("#000000");
-  }
+  },
 });

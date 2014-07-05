@@ -1,6 +1,6 @@
 Game = {
 
-  // Creates a grid of 50x50 using 16x16 tiles
+  // Creates a grid of 70x50 using 16x16 tiles
   map_grid: {
     width: 70,
     height: 50,
