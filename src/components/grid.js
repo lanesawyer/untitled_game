@@ -21,6 +21,17 @@ Crafty.c('Grid', {
       this.attr({ x: x * Game.map_grid.tile.width, y: y * Game.map_grid.tile.height });
       return this;
     }
+  },
+
+  atRandom: function() {
+    var randomX = Math.floor(Math.random() * Game.map_grid.width) * Game.map_grid.tile.width;
+    var randomY = Math.floor(Math.random() * Game.map_grid.height) * Game.map_grid.tile.height;
+
+    this.attr({ 
+      x: randomX,
+      y: randomY
+    });
+    return this; 
   }
 });
  

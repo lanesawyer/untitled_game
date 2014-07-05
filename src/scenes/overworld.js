@@ -14,6 +14,15 @@ Crafty.scene('Overworld', function() {
   createEnemies(this);
   createWorld(this);
   createHUD(this);
+
+  // Creates a new powerup on the screen once collected
+  this.powerupCollected = this.bind('PowerupCollected', function() {
+    var powerup = Crafty.e('Powerup').atRandom().powerLevel(1);
+    this.powerups.push(powerup);
+  });
+}, function() {
+  // Remove event binding to prevent multiple event watchers from being created
+  this.unbind('PowerupCollected', this.powerupCollected);
 });
 
 var createPlayer = function(scene) {
@@ -31,8 +40,7 @@ var createWorld = function(scene) {
 
   // Add first powerup
   scene.powerups = [];
-  scene.powerups.push(Crafty.e('Powerup').at(8, 4).powerLevel(1));
-
+  scene.powerups.push(Crafty.e('Powerup').atRandom().powerLevel(1));
 
   // Create trees, bushes, and rocks
   for(var x = 0; x < Game.map_grid.width; x++) {

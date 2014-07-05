@@ -17,5 +17,6 @@ Crafty.c('Powerup', {
 
   collect: function() {
     this.destroy();
+    Crafty.trigger('PowerupCollected', this);
   }
 });

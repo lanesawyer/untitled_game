@@ -27,7 +27,7 @@ Game = {
 
     // Start at the loading screen to give everything time to load
     Crafty.scene('Loading');
-  }
+  },
 }
 
 // Start the game once the page loads
