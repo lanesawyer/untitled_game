@@ -23,6 +23,8 @@ Crafty.c('Grid', {
     }
   },
 
+  // Sets the entity to a random position on the grid
+  // TODO: Ensure spawn at empty grid point
   atRandom: function() {
     var randomX = Math.floor(Math.random() * Game.map_grid.width) * Game.map_grid.tile.width;
     var randomY = Math.floor(Math.random() * Game.map_grid.height) * Game.map_grid.tile.height;

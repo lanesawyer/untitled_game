@@ -11,10 +11,11 @@ Crafty.scene('Loading', function() {
     'assets/player.png'
   ], function() {
     Crafty.sprite(16, 'assets/player.png', {
-      spr_player_stage1: [0, 0],
-      spr_player_stage2: [1, 0],
-      spr_player_stage3: [2, 0],
-      spr_player_stage4: [3, 0],
+      spr_player_stage0_level0: [0, 0],
+      spr_player_stage0_level1: [1, 0],
+      spr_player_stage0_level2: [2, 0],
+      spr_player_stage0_level3: [3, 0],
+      spr_player_stage0_level4: [4, 0],
     });
 
     // Once everything is loaded, start the game

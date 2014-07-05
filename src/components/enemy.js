@@ -6,6 +6,7 @@ Crafty.c('Enemy', {
     .color("#000000");
   },
 
+  // Used to set or get damage caused by an enemy
   damage: function(damage) {
     if(damage === undefined) {
       return this._damage;
@@ -13,5 +14,5 @@ Crafty.c('Enemy', {
       this._damage = damage;
       return this;
     }
-  }
+  },
 });

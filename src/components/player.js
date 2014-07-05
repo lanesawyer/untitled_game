@@ -2,14 +2,15 @@
 // The main player in the game
 Crafty.c('Player', {
   init: function() {
-    this.requires('Actor, Fourway, Collision, spr_player_stage1')
+    this.requires('Actor, Fourway, Collision, spr_player_stage0_level0')
     .fourway(2)
     .onHit('Enemy', this.health)
     .onHit('Powerup', this.collectPowerup)
     .stopOnSolids();
 
     this._health = 4;
-    this._powerLevel = 1;
+    this._powerLevel = 0;
+    this._stage = 0;
   },
 
   health: function(data) {
@@ -22,15 +23,18 @@ Crafty.c('Player', {
 
   collectPowerup: function(data) {
     var powerup = data[0].obj;
+    var oldPowerLevel = this._powerLevel;
     this._powerLevel += powerup.powerLevel();
 
-    if(this._powerLevel === 2) {
-      this.toggleComponent("spr_player_stage1","spr_player_stage2");
-    } else if(this._powerLevel === 3) {
-      this.toggleComponent("spr_player_stage2","spr_player_stage3");
-    } else if(this._powerLevel === 4) {
-      this.toggleComponent("spr_player_stage3","spr_player_stage4");
+    if(this._powerLevel % 5 === 0) {
+      this._stage += 1;
     }
+
+    console.log(this._stage);
+    console.log(this._powerLevel);
+
+    this.toggleComponent("spr_player_stage" + this._stage + "_level" + oldPowerLevel,"spr_player_stage" + this._stage + "_level" + this._powerLevel);
+
     powerup.collect();
   },
 
