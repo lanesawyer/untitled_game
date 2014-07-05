@@ -4,21 +4,34 @@ Crafty.c('Player', {
   init: function() {
     this.requires('Actor, Fourway, Collision, Color')
     .fourway(2)
-    .onHit('Enemy', this.enterEnemy)
+    .onHit('Enemy', this.health)
+    .onHit('Powerup', this.collectPowerup)
     .stopOnSolids()
     .color("#FFFFFF");
+
+    this._health = 4;
+    this.powerLevel = 0;
   },
 
-  enterEnemy: function(data) {
+  health: function(data) {
     var enemy = data[0].obj;
-    Crafty.scene('InsideEnemy', enemy);
+    this._health -= enemy.damage();
+    console.log(this._health);
+    if(this._health <= 0) {
+      console.log('Game Over');
+    }
+  },
+
+  collectPowerup: function(data) {
+    var powerup = data[0].obj;
+    this.powerLevel += powerup.powerLevel();
+    powerup.collect();
   },
 
   // Registers a stop-movement function to be called when
   //  this entity hits an entity with the "Solid" component
   stopOnSolids: function() {
     this.onHit('Solid', this.stopMovement);
- 
     return this;
   },
  

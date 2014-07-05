@@ -5,4 +5,13 @@ Crafty.c('Enemy', {
     this.requires('Actor, Color')
     .color("#000000");
   },
+
+  damage: function(damage) {
+    if(damage === undefined) {
+      return this._damage;
+    } else {
+      this._damage = damage;
+      return this;
+    }
+  }
 });

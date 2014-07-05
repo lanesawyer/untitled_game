@@ -2,8 +2,7 @@
 This game is a collaborative project.
 
 ## Game Vision ##
-A top-down game where you are a tiny pixel. Your objective is to "take over"
-enemies by either sneaking into their bodies or weakening them through combat.
+A top-down game where you are a pixel. As you defeat enemies and collect more power-ups, you become more well-defined and powerful.
 
 ## App Structure ##
 

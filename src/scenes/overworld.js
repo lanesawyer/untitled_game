@@ -13,6 +13,7 @@ Crafty.scene('Overworld', function() {
   createPlayer(this);
   createEnemies(this);
   createWorld(this);
+  createHUD(this);
 });
 
 var createPlayer = function(scene) {
@@ -21,12 +22,19 @@ var createPlayer = function(scene) {
 };
 
 var createEnemies = function (scene) {
-  scene.enemy = Crafty.e('Enemy').at(15, 15);
-  scene.enemy.setSize(Game.map_grid.tile.width * 6, Game.map_grid.tile.height * 6);
+  scene.enemy = Crafty.e('Enemy').at(15, 15).damage(1);
+  scene.enemy.setSize(Game.map_grid.tile.width, Game.map_grid.tile.height);
   scene.occupied[scene.enemy.at().x][scene.enemy.at().y] = true;
 };
 
 var createWorld = function(scene) {
+
+  // Add first powerup
+  scene.powerups = [];
+  scene.powerups.push(Crafty.e('Powerup').at(8, 4).powerLevel(1));
+
+
+  // Create trees, bushes, and rocks
   for(var x = 0; x < Game.map_grid.width; x++) {
     for(var y = 0; y < Game.map_grid.height; y++) {
       if(Math.random() < 0.01 && !scene.occupied[x][y]) {
@@ -42,4 +50,14 @@ var createWorld = function(scene) {
       }
     }
   }
+};
+
+var createHUD = function(scene) {
+  // Health bar
+  Crafty.e("2D, DOM, Text").attr({ x: 15, y: 0 }).text("Health");
+  scene.healthBar = Crafty.e('HealthBar');
+
+  // Power level bar
+  Crafty.e("2D, DOM, Text").attr({ x: Game.map_grid.width * Game.map_grid.tile.width - 75, y: 0, w: 100 }).text("Power Level");
+  scene.powerLevelBar = Crafty.e('PowerLevelBar');
 };
