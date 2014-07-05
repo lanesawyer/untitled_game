@@ -1,0 +1,3 @@
+Crafty.scene('InsideEnemy', function() {
+  
+});
